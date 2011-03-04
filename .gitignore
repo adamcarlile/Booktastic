@@ -3,3 +3,7 @@ db/*.sqlite3
 log/*.log
 tmp/
 config/database.yml
+public/stylesheets/.gitkeep
+public/stylesheets/ie.css
+public/stylesheets/print.css
+public/stylesheets/screen.css
