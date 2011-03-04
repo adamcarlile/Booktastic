@@ -167,6 +167,7 @@ DEPENDENCIES
   jquery-rails
   mongrel (= 1.2.0.pre2)
   mysql
+  nokogiri
   paperclip
   rails (= 3.0.4)
   rspec

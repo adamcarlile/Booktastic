@@ -12,6 +12,7 @@ gem 'paperclip'
 gem 'acts-as-taggable-on'
 gem 'jquery-rails'
 gem 'httparty'
+gem 'nokogiri'
 
 group :development do
   gem 'mongrel', '1.2.0.pre2'
