@@ -1,0 +1,6 @@
+<% content_for :script do %>
+	
+<% end %>
+<%= simple_form_for resource, :url => collection_url do |f| %>
+	<%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
