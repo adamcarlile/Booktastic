@@ -4,12 +4,13 @@ class BookmarkObserver < ActiveRecord::Observer
   # TODO: Refactor at some point, possibly use create_association()
   def before_save(bookmark)
     create_domain_relationship(bookmark)
-    setup_compressed_url(bookmark)
+    get_html_attributes(bookmark)
   end
   
   private
     
-    def setup_compressed_url(bookmark)
+    def get_html_attributes(bookmark)
+      @document = RemotePage.new(bookmark.url)
       bookmark.short_url
     end
   

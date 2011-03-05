@@ -7,6 +7,9 @@ require 'rspec/rails'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
+FakeWeb.register_uri(:get, "http://tinyurl.com/api-create.php?url=http://bbc.co.uk", :body => "http://tinyurl.com/ocix")
+FakeWeb.register_uri(:get, "http://bbc.co.uk", :body => File.read("#{::Rails.root}/spec/fixtures/bookmarks/bbc.html"))
+
 RSpec.configure do |config|
   # == Mock Framework
   #

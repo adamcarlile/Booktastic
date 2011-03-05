@@ -14,22 +14,36 @@ class Bookmark < ActiveRecord::Base
   def to_s
     url
   end
-  
-  #
-  # TODO: Break this out into a libray
-  #
+
+  def document_title
+    @html_document.
+  end
+
   def short_url
-    if compressed_url.nil?
-      begin
-        write_attribute(:compressed_url, HTTParty.get("http://tinyurl.com/api-create.php?url=#{url}").parsed_response)
-        save
-        return compressed_url
-      rescue 
-        false
-      end
-    else
-      compressed_url
+    set_if_value_exists(:compressed_url) do
+      HTTParty.get("http://tinyurl.com/api-create.php?url=#{url}").parsed_response
     end
   end
+  
+  private
+
+    def get_url_html_document
+      @document = 
+    end
+
+    def set_if_value_exists(column, &block)
+      if send(column).nil?
+        begin
+          write_attribute(column, block.call)
+          save
+          send(column)
+        rescue 
+          false
+        end
+      else
+        send(column)
+      end
+    end
+    
   
 end

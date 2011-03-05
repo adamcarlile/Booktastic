@@ -1,6 +1,6 @@
 class RemotePage
   
-  attr_accessor :url, :document
+  attr_accessor :url
   
   def initialize(uri)
     @url = URI.parse(uri)
