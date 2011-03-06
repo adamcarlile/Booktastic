@@ -9,8 +9,15 @@
 <div class="wrapper">
 	<header>
 		<h1>Booktastic</h1>
+		<nav>
+			<ul>
+				<li><%= link_to "New Bookmark", new_bookmark_path %></li>
+				<li><%= link_to "Home", root_path %></li>
+			</ul>
+		</nav>
 	</header>
 	<section id="content">
+		<%= render_flash %>
 		<%= yield %>
 	</section>
 </div>

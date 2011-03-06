@@ -17,8 +17,9 @@ class Domain < ActiveRecord::Base
   end
   
   def to_param
-    
+    "#{id}-#{domain.parameterize}"
   end
+  
   
   private
     

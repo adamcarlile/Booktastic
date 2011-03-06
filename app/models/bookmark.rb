@@ -4,9 +4,8 @@ class Bookmark < ActiveRecord::Base
   
   include Booktastic::ConditionalSet
   
-  validate :validate_url
   validates_presence_of :url
-  validates_format_of :url, :with => URI::regexp(%w(http https)), :message => "Make sure that you enter a valid URL"
+  validate :validate_url
   
   # Strip www from domains, but leave intact any other subdomains
   def to_domain
@@ -28,12 +27,16 @@ class Bookmark < ActiveRecord::Base
   
     # Custom validation method to ensure the domain + bookmark actually exists
     def validate_url
-      begin
-        http_object = HTTParty.get(url)
-      rescue SocketError
-        errors.add(:url, "This url doesn't exist")
-      else
-        errors.add(:url, "This url doesn't exist") if http_object.response.is_a? Net::HTTPNotFound
+      unless url.blank?
+        begin
+          http_object = HTTParty.get(url)
+        rescue HTTParty::UnsupportedURIScheme
+          errors.add(:url, "Make sure that you enter a valid URL")
+        rescue SocketError
+          errors.add(:url, "This url doesn't exist")
+        else
+          errors.add(:url, "This url doesn't exist") if http_object.response.is_a? Net::HTTPNotFound
+        end
       end
     end
     

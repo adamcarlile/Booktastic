@@ -9,6 +9,7 @@
 @import "extras/league_gothic"
 @import "compass/css3"
 @import "compass/utilities/general/clearfix"
+@import "mixins/navigation"
 
 body
 	font-family: sans-serif
@@ -25,6 +26,7 @@ div.wrapper
 header
 	display: block
 	margin-bottom: 20px
+	@include pie-clearfix
 	
 	h1
 		font:
@@ -40,6 +42,20 @@ header
 			left: 130px
 			top: 30px
 			bottom: 30px
+		float: left
+	
+	nav
+		display: block
+		float: right
+		margin-top: 100px
+		
+		ul
+			li
+				float: right
+				margin-right: 20px
+				a
+					@include button(#730909, #e2e2e2, #fdfdfd)
+					@include box-shadow(#000000, 0px, 0px, 20px)
 
 section#content
 	display: block
@@ -150,4 +166,63 @@ ul.extra
 			font-size: 11px
 			color: #919191
 	
+form.simple_form
+	padding: 20px
+	width: 500px
+	margin: auto
+	@include linear-gradient(color-stops('#e2e2e2', '#fdfdfd'), bottom)
+	@include border-radius(10px)
+
+	label
+		font-size: 18px
+		padding-top: 7px
+		font-weight: bold
+		color: #730909
+
+	input.button
+		@include button(#730909, #e2e2e2, #fdfdfd)
+		@include box-shadow(#888888, 0px, 0px, 5px)
+		margin-top: 20px
+	
+	input.string
+		background-color: #ebebeb
+		@include border-radius(5px)
+		border: 1px solid #cecece
+		font-size: 18px
+		width: 350px
+		padding: 5px
+	
+	div.field_with_errors
+		background-color: transparent
+		
+		input
+			border: 1px solid #730909
+			color: #730909
+		
+		span.error
+			display: block
+			padding-top: 10px
+			color: #730909
+			font-size: 11px
 				
+div#flash
+	@include box-shadow(#000000, 0px, 0px, 20px)
+	padding:
+		top: 10px
+		bottom: 10px
+		left: 20px
+		right: 20px
+	color: #ffffff
+	font-size: 14px
+	font-weight: bold
+	@include border-radius(10px)
+	margin-bottom: 20px
+	background:
+		repeat: no-repeat
+	text-shadow: 1px 1px 0px #000000
+	
+	&.notice
+		background:
+			color: #0e6d15
+		border: 1px solid #23992b
+		@include linear-gradient(color-stops('#1d5021', '#0e6d15'), bottom)

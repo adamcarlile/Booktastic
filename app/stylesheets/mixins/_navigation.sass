@@ -1,0 +1,16 @@
+@mixin button($color, $grad-top, $grad-bottom)
+	display: block
+	padding:
+		left: 10px
+		right: 10px
+		top: 7px
+		bottom: 7px
+	@include linear-gradient(color-stops($grad-bottom, $grad-top), bottom)
+	@include border-radius(5px)
+	font-size: 16px
+	font-family: sans-serif
+	font-weight: bold
+	border: 1px solid $grad-top
+	color: $color
+	text-decoration: none
+	cursor: pointer
