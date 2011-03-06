@@ -9,9 +9,11 @@ class BookmarkObserver < ActiveRecord::Observer
   
   private
     
+    # TODO: Add a begin rescue block here
     def get_html_attributes(bookmark)
       @document = RemotePage.new(bookmark.url)
-      bookmark.short_url
+      bookmark.title = @document.title
+      bookmark.description = @document.summary
     end
   
     def create_domain_relationship(bookmark)

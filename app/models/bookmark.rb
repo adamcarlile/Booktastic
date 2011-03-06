@@ -1,7 +1,10 @@
 class Bookmark < ActiveRecord::Base
-  acts_as_taggable_on :tag 
+  acts_as_taggable_on :tag   
   belongs_to :domain
   
+  include Booktastic::ConditionalSet
+  
+  validate :validate_url
   validates_presence_of :url
   validates_format_of :url, :with => URI::regexp(%w(http https)), :message => "Make sure that you enter a valid URL"
   
@@ -15,33 +18,22 @@ class Bookmark < ActiveRecord::Base
     url
   end
 
-  def document_title
-    @html_document.
-  end
-
   def short_url
-    set_if_value_exists(:compressed_url) do
+    set_if_value_does_not_exist(:compressed_url) do
       HTTParty.get("http://tinyurl.com/api-create.php?url=#{url}").parsed_response
     end
   end
   
   private
-
-    def get_url_html_document
-      @document = 
-    end
-
-    def set_if_value_exists(column, &block)
-      if send(column).nil?
-        begin
-          write_attribute(column, block.call)
-          save
-          send(column)
-        rescue 
-          false
-        end
+  
+    # Custom validation method to ensure the domain + bookmark actually exists
+    def validate_url
+      begin
+        http_object = HTTParty.get(url)
+      rescue SocketError
+        errors.add(:url, "This url doesn't exist")
       else
-        send(column)
+        errors.add(:url, "This url doesn't exist") if http_object.response.is_a? Net::HTTPNotFound
       end
     end
     

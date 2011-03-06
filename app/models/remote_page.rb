@@ -1,4 +1,7 @@
 class RemotePage
+  # Spoof user agent in order to get correct HTML Content
+  include HTTParty
+  headers 'User-Agent' => 'Mozilla/5.0'
   
   attr_accessor :url
   
@@ -8,11 +11,11 @@ class RemotePage
   end
   
   def title
-    @document.css('title').text
+    @document.css('title').text unless @document.css('title').empty?
   end
   
   def summary
-    @document.css('meta[name=description]').first['content']
+    @document.css('meta[name=description]').first['content'] unless @document.css('meta[name=description]').empty?
   end
   
   private
