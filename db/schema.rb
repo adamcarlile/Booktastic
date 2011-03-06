@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110304213638) do
+ActiveRecord::Schema.define(:version => 20110305021927) do
 
   create_table "bookmarks", :force => true do |t|
     t.string   "url"
@@ -18,12 +18,15 @@ ActiveRecord::Schema.define(:version => 20110304213638) do
     t.datetime "updated_at"
     t.integer  "domain_id"
     t.string   "compressed_url"
+    t.string   "title"
+    t.text     "description"
   end
 
   create_table "domains", :force => true do |t|
     t.string   "domain"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "icon"
   end
 
   create_table "taggings", :force => true do |t|

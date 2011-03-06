@@ -6,9 +6,14 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-
-<%= yield %>
-
+<div class="wrapper">
+	<header>
+		<h1>Booktastic</h1>
+	</header>
+	<section id="content">
+		<%= yield %>
+	</section>
+</div>
 <%= javascript_include_tag :defaults %>
 <%= yield :script %>
 </body>

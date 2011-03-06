@@ -1,0 +1,8 @@
+<ul id="domains">
+	<% collection.each do |domain| %>
+	<li>
+		<%= image_tag domain.icon_url, :width => 60, :height => 60 %>
+		<h1><%= link_to domain.to_s, domain_bookmarks_path(domain) %></h1>
+	</li>
+	<% end %>
+</ul>

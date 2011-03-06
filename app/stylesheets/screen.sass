@@ -6,3 +6,148 @@
 @import "compass/reset"
 @import "extras/simpleform"
 @import "extras/jquery_ui"
+@import "extras/league_gothic"
+@import "compass/css3"
+@import "compass/utilities/general/clearfix"
+
+body
+	font-family: sans-serif
+	font-size: 10px
+	background:
+		color: #000000
+		image: image_url('background.jpg')
+		repeat: no-repeat
+	
+div.wrapper
+	width: 740px
+	margin: auto
+	
+header
+	display: block
+	margin-bottom: 20px
+	
+	h1
+		font:
+			family: "League Gothic"
+			size: 120px
+		letter-spacing: -3px
+		color: #ffffff
+		text-shadow: 1px 1px 20px #000000
+		background:
+			image: image_url('bookmark.png')
+			repeat: no-repeat
+		padding:
+			left: 130px
+			top: 30px
+			bottom: 30px
+
+section#content
+	display: block
+	width: 700px
+	margin: auto
+
+ul#domains >
+	li
+		@include linear-gradient(color-stops('#e2e2e2', '#fdfdfd'), bottom)
+		@include border-radius(10px)
+		margin-bottom: 10px
+		@include pie-clearfix
+		position: relative
+		height: 90px
+		
+		&:hover, &.selected
+			background-color: #fbf398
+			@include linear-gradient(color-stops('#f9ee71', '#fbf398'), bottom)
+		
+		img
+			float: left
+			display: block
+			background:
+				color: #740c0c
+			@include linear-gradient(color-stops('#730909', '#9e3939'), bottom)
+			padding: 15px
+			@include border-radius(10px 0px 0px 10px)
+			border-right: 1px solid #520505
+			
+		h1
+			a
+				font:
+					family: "League Gothic"
+					size: 46px
+				color: #730909
+				display: block
+				text-decoration: none
+				letter-spacing: -1px
+				padding:
+					left: 120px
+					top: 25px
+					bottom: 20px
+				text-shadow: 1px 1px 0px #ffffff
+					
+ul#bookmarks
+	position: absolute
+	top: 90px
+	width: 500px
+	left: 100px
+	background:
+		color: #e2e2e2
+		image: image_url('tab-top-grad.png')
+		repeat: repeat-x
+	@include border-radius(0px 0px 10px 10px)
+	padding-top: 10px
+	
+	> li
+		padding: 
+			top: 10px
+			bottom: 10px
+			left: 20px
+			right: 20px
+		border-top: 1px solid #a4a4a4
+		
+		&:first-child
+			border-top: 0px
+		
+		h2
+			padding-bottom: 5px
+			a
+				font:
+					size: 14px
+					weight: bold
+				color: #730909
+		
+		p
+			font-size: 11px
+			color: #333333
+			line-height: 1.4em
+				
+		
+ul.extra
+	margin-top: 5px
+	@include pie-clearfix
+	
+	&:hover
+		a, span
+			color: #333333
+			
+	li
+		float: left
+		padding:
+			left: 16px
+			right: 10px
+		background:
+			position: left center
+			repeat: no-repeat
+		
+		&.date
+			background-image: image_url('icons/calendar-small.png')
+		
+		&.short-url
+			background-image: image_url('icons/chain-small.png')
+		
+		a, span
+			display: block
+			padding-top: 2px
+			font-size: 11px
+			color: #919191
+	
+				
