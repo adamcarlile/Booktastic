@@ -18,6 +18,7 @@ class BookmarkObserver < ActiveRecord::Observer
   
     def create_domain_relationship(bookmark)
       domain = Domain.find_or_create_by_domain(:domain => bookmark.to_domain)
+      domain.touch
       bookmark.domain_id = domain.id
     end
   

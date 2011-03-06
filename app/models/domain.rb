@@ -4,7 +4,7 @@ class Domain < ActiveRecord::Base
   
   include Booktastic::ConditionalSet
   
-  default_scope :include => :bookmarks
+  default_scope :include => :bookmarks, :order => "updated_at DESC"
   
   def to_s
     domain

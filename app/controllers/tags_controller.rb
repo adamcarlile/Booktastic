@@ -1,7 +1,7 @@
 class TagsController < ApplicationController
   
   def index
-    find_options = {:limit => 100}
+    find_options = {:limit => 10}
     unless params[:term].blank?
       find_options[:conditions] = ['name like ?', "%#{params[:term]}%"]
     end
