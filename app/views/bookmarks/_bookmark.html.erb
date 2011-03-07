@@ -1,0 +1,13 @@
+<li>
+	<h2><%= link_to bookmark.title, bookmark.url %></h2>
+	<%= raw render_tag_list(bookmark.tag_list)%>
+	<%= content_tag(:p, truncate(bookmark.description, :length => 250)) unless bookmark.description.blank? %>
+	<ul class="extra">
+		<li class="short-url">
+			<%= link_to bookmark.short_url, bookmark.short_url %>
+		</li>
+		<li class="date">
+			<%= content_tag(:span, bookmark.created_at.to_s(:long)) %>
+		</li>
+	</ul>
+</li>

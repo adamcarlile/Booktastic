@@ -3,20 +3,7 @@
 		<%= image_tag parent.icon_url, :width => 60, :height => 60 %>
 		<h1><%= link_to parent.to_s, domain_bookmarks_path(parent) %></h1>
 		<ul id="bookmarks">
-			<% collection.each do |bookmark| %>
-			<li>
-				<h2><%= link_to bookmark.title, bookmark.url %></h2>
-				<%= content_tag(:p, truncate(bookmark.description, :length => 250)) unless bookmark.description.blank? %>
-				<ul class="extra">
-					<li class="short-url">
-						<%= link_to bookmark.short_url, bookmark.short_url %>
-					</li>
-					<li class="date">
-						<%= content_tag(:span, bookmark.created_at.to_s(:long)) %>
-					</li>
-				</ul>
-			</li>
-			<% end %>
+			<%= render :partial => 'bookmark', :collection => collection %>
 		</ul>
 	</li>
 </ul>

@@ -9,6 +9,10 @@
 <div class="wrapper">
 	<header>
 		<h1>Booktastic</h1>
+		<% form_tag search_bookmarks_path, :method => :get, :class => "search-form" do %>
+		  <%= text_field_tag :query, params[:query] %>
+		  <input type="submit" value="Search" class="button" />
+		<% end %>
 		<nav>
 			<ul>
 				<li><%= link_to "New Bookmark", new_bookmark_path %></li>

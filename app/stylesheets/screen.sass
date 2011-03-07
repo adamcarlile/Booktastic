@@ -132,13 +132,13 @@ ul#bookmarks
 				color: #730909
 		
 		p
-			font-size: 11px
+			font-size: 12px
 			color: #333333
 			line-height: 1.4em
+			margin-bottom: 10px
 				
 		
 ul.extra
-	margin-top: 5px
 	@include pie-clearfix
 	
 	&:hover
@@ -164,7 +164,7 @@ ul.extra
 			display: block
 			padding-top: 2px
 			font-size: 11px
-			color: #919191
+			color: #6f6f6f
 	
 form.simple_form
 	padding: 20px
@@ -226,3 +226,22 @@ div#flash
 			color: #0e6d15
 		border: 1px solid #23992b
 		@include linear-gradient(color-stops('#1d5021', '#0e6d15'), bottom)
+		
+ul.tag-list
+	margin-bottom: 5px
+	margin-top: 5px
+	@include pie-clearfix
+	
+	li
+		color: #6f6f6f
+		float: left
+		padding-left: 15px
+		padding-right: 10px
+		padding-top: 2px
+		margin-bottom: 5px
+		background:
+			image: image_url('icons/tag-small.png')
+			repeat: no-repeat
+			position: left center
+		
+	

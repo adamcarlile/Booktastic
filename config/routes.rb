@@ -4,7 +4,11 @@ Booktastic::Application.routes.draw do
   resources :domains, :only => :index do
     resources :bookmarks
   end
-  resources :bookmarks
+  resources :bookmarks do
+    collection do
+      get 'search'
+    end
+  end
   
   resources :tags, :only => :index
   

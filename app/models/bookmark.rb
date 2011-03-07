@@ -3,6 +3,7 @@ class Bookmark < ActiveRecord::Base
   belongs_to :domain
   
   include Booktastic::ConditionalSet
+  include Booktastic::SearchableModel
   
   validates_presence_of :url
   validate :validate_url

@@ -6,5 +6,13 @@ class BookmarksController < ApplicationController
     create!(:notice => "Your bookmark has been saved!"){root_url}
   end
   
+  def search
+    if params[:query]
+      @bookmarks = Bookmark.search(params[:query])
+    else
+      @bookmarks = []
+    end
+  end
+  
 
 end
