@@ -13,6 +13,7 @@ gem 'acts-as-taggable-on'
 gem 'jquery-rails'
 gem 'httparty'
 gem 'nokogiri'
+gem 'factory_girl_rails'
 
 group :development do
   gem 'mongrel', '1.2.0.pre2'
@@ -22,14 +23,12 @@ end
 group :test do
   gem 'rspec'
   gem 'rspec-rails', '>= 2.0.1'
-  gem 'factory_girl_rails'
   gem 'cucumber-rails'
   gem 'capybara'
   gem 'fakeweb'
 end
 
 group :cucumber do
-  gem 'factory_girl_rails'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'cucumber-rails'

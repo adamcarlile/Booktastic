@@ -3,7 +3,7 @@ class RemotePage
   include HTTParty
   headers 'User-Agent' => 'Mozilla/5.0'
   
-  attr_accessor :url
+  attr_accessor :url, :document
   
   def initialize(uri)
     @url = URI.parse(uri)
@@ -15,8 +15,8 @@ class RemotePage
   end
   
   def summary
-    if @document.css('meta[name=Description], meta[name=description]').empty?
-      @document.css('p').first['content'] 
+    if @document.css('meta[name=Description], meta[name=description]').blank?
+      @document.css('p').first.text
     else
       @document.css('meta[name=Description], meta[name=description]').first['content']
     end
