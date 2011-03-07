@@ -1,3 +1,1 @@
-<ul id="results">
-	<%= render :partial => 'bookmark', :collection => @bookmarks %>
-</ul>
+<%= content_tag(:ul, render(:partial => 'bookmark', :collection => @bookmarks), :id => "results") unless @bookmarks.empty? %>

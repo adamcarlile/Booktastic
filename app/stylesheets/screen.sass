@@ -47,7 +47,6 @@ header
 	nav
 		display: block
 		float: right
-		margin-top: 100px
 		
 		ul
 			li
@@ -56,11 +55,16 @@ header
 				a
 					@include button(#730909, #e2e2e2, #fdfdfd)
 					@include box-shadow(#000000, 0px, 0px, 20px)
+					
+					&:hover
+						background-color: #fbf398
+						@include linear-gradient(color-stops('#f9ee71', '#fbf398'), bottom)
 
 section#content
 	display: block
 	width: 700px
 	margin: auto
+	margin-bottom: 20px
 
 ul#domains >
 	li
@@ -100,7 +104,7 @@ ul#domains >
 					bottom: 20px
 				text-shadow: 1px 1px 0px #ffffff
 					
-ul#bookmarks
+ul#bookmarks, ul#results
 	position: absolute
 	top: 90px
 	width: 500px
@@ -136,7 +140,13 @@ ul#bookmarks
 			color: #333333
 			line-height: 1.4em
 			margin-bottom: 10px
-				
+
+ul#results
+	position: static
+	margin: auto
+	@include border-radius(10px)
+	background:
+		image: none
 		
 ul.extra
 	@include pie-clearfix
@@ -183,6 +193,10 @@ form.simple_form
 		@include button(#730909, #e2e2e2, #fdfdfd)
 		@include box-shadow(#888888, 0px, 0px, 5px)
 		margin-top: 20px
+		
+		&:hover
+			background-color: #fbf398
+			@include linear-gradient(color-stops('#f9ee71', '#fbf398'), bottom)
 	
 	input.string
 		background-color: #ebebeb
@@ -243,5 +257,35 @@ ul.tag-list
 			image: image_url('icons/tag-small.png')
 			repeat: no-repeat
 			position: left center
+			
+form.search-form
+	margin:
+		top: 60px
+		bottom: 15px
+		right: 20px
+	float: right
+	width: 224px
+	
+	input#query
+		float: left
+		width: 130px
+		height: 27px
+		padding-left: 5px
+		background-color: #ebebeb
+		@include border-radius(5px 0px 0px 5px)
+		border: 1px solid #cecece
+		font-size: 16px
+	
+	input.button
+		@include button(#730909, #e2e2e2, #fdfdfd)
+		@include border-radius(0px 5px 5px 0px)
+		float: left
+		height: 31px
+		width: 85px
+		text-align: center
+		
+		&:hover
+			background-color: #fbf398
+			@include linear-gradient(color-stops('#f9ee71', '#fbf398'), bottom)
 		
 	

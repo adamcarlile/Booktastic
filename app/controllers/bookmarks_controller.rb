@@ -7,10 +7,10 @@ class BookmarksController < ApplicationController
   end
   
   def search
-    if params[:query]
-      @bookmarks = Bookmark.search(params[:query])
-    else
+    if params[:query].blank?
       @bookmarks = []
+    else
+      @bookmarks = Bookmark.search(params[:query])
     end
   end
   

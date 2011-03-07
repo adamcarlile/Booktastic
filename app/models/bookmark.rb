@@ -8,6 +8,8 @@ class Bookmark < ActiveRecord::Base
   validates_presence_of :url
   validate :validate_url
   
+  default_scope :order => 'created_at DESC'
+  
   # Strip www from domains, but leave intact any other subdomains
   def to_domain
     domain = URI.parse(url)
