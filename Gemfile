@@ -27,3 +27,14 @@ group :test do
   gem 'capybara'
   gem 'fakeweb'
 end
+
+group :cucumber do
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'cucumber-rails'
+  gem 'cucumber'
+  gem 'rspec-rails', '>= 2.0.1'
+  gem 'spork'
+  gem 'launchy'
+end  

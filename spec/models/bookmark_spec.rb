@@ -18,4 +18,8 @@ describe Bookmark do
     @bookmark.description.should == 'Breaking news, sport, TV, radio and a whole lot more. The BBC informs, educates and entertains - wherever you are, whatever your age.'
   end
   
+  it "Should return the domain" do
+    @bookmark.to_domain.should == "bbc.co.uk"
+  end
+    
 end

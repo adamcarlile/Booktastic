@@ -15,7 +15,11 @@ class RemotePage
   end
   
   def summary
-    @document.css('meta[name=Description], meta[name=description]').first['content'] unless @document.css('meta[name=Description], meta[name=description]').empty?
+    if @document.css('meta[name=Description], meta[name=description]').empty?
+      @document.css('p').first['content'] 
+    else
+      @document.css('meta[name=Description], meta[name=description]').first['content']
+    end
   end
   
   private

@@ -1,7 +1,7 @@
 <li>
 	<h2><%= link_to bookmark.title, bookmark.url %></h2>
 	<%= raw render_tag_list(bookmark.tag_list)%>
-	<%= content_tag(:p, truncate(bookmark.description, :length => 250)) unless bookmark.description.blank? %>
+	<%= content_tag(:p, truncate(strip_tags(bookmark.description), :length => 250)) unless bookmark.description.blank? %>
 	<ul class="extra">
 		<li class="short-url">
 			<%= link_to bookmark.short_url, bookmark.short_url %>
